@@ -50,7 +50,7 @@ class Figure:
         stdscr.addstr(plot_height-1, canvas_width-xtick_size, '{num:>{size}.1e}'.format(num=val_range[1], size=xtick_size))  # x_max
 
         # Draw plots
-        descrete_plots = self._discretize_plots(plot_height-3, plot_width-3, *val_range)
+        descrete_plots = self._discretize_plots(plot_height-4, plot_width-3, *val_range)
         for k, p in enumerate(descrete_plots):
             for xi, yi in p:
                 stdscr.addstr(yi+1, xi+xtick_size+1+1, self.markers[k], curses.color_pair(self.colors[k]))
@@ -73,7 +73,7 @@ class Figure:
                 xi = (xi - x_min) / (x_max - x_min)
                 yi = (y_max - yi) / (y_max - y_min)
 
-                if not (0<=xi<1 and 0<=yi<1):
+                if not (0<=xi<=1 and 0<=yi<=1):
                     continue
 
                 xi = int(xi * width)
@@ -81,6 +81,7 @@ class Figure:
 
                 pd.append((xi, yi))
             discrete_plots.append(pd)
+        discrete_plots.append([(0, 0), (0, height), (width, 0), (width, height)])  # Debug plots
 
         return discrete_plots
 
