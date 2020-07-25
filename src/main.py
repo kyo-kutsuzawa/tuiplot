@@ -25,8 +25,8 @@ class Figure:
     def __init__(self):
         self.plots = []
         self.labels = []
-        self.markers = ['*', '+', 'O', '#', '@', 'x']
-        self.colors =  [ 2,   7,   3,   5,   6,   4 ]
+        self.markers = ['x', '+', '*', '#', '@', 'o']
+        self.colors =  [ 2,   7,   3,   4,   6,   5 ]
 
     def plot(self, x, y, label=''):
         self.plots.append((x, y))
@@ -67,8 +67,8 @@ class Figure:
         # Draw ticks
         stdscr.addstr(0,             0,                       '{num:>{size}.1e}'.format(num=val_range[3], size=xtick_size))  # y_max
         stdscr.addstr(plot_height-2, 0,                       '{num:>{size}.1e}'.format(num=val_range[2], size=xtick_size))  # y_min
-        stdscr.addstr(plot_height-1,   xtick_size+1,            '{num:.1e}'.format(num=val_range[0]))                          # x_min
-        stdscr.addstr(plot_height-1,   canvas_width-xtick_size, '{num:>{size}.1e}'.format(num=val_range[1], size=xtick_size))  # x_max
+        stdscr.addstr(plot_height-1, xtick_size+1,            '{num:.1e}'.format(num=val_range[0]))                          # x_min
+        stdscr.addstr(plot_height-1, canvas_width-xtick_size, '{num:>{size}.1e}'.format(num=val_range[1], size=xtick_size))  # x_max
 
         # Draw plots
         descrete_plots = self._discretize_plots(plot_height-3, plot_width-3, *val_range)
