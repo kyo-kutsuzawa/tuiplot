@@ -1,26 +1,6 @@
 import curses
 
 
-class MockStdscr:
-    def __init__(self):
-        pass
-
-    def getmaxyx(self):
-        return 30, 150
-
-    def addstr(self, *args):
-        pass
-
-    def addch(self, *args):
-        pass
-
-    def refresh(self):
-        pass
-
-    def getkey(self):
-        pass
-
-
 class Figure:
     def __init__(self):
         self.plots = []
@@ -33,7 +13,6 @@ class Figure:
         self.labels.append(label)
 
     def show(self):
-        #self._show(MockStdscr())
         curses.wrapper(self._show)
 
     def _show(self, stdscr):
@@ -132,28 +111,3 @@ class Figure:
         ytick_size = 1
 
         return xtick_size, ytick_size
-
-
-def example():
-    import numpy as np
-
-    # Create data
-    x = np.linspace(0, 5, 100)
-    y1 = np.sin(x * 0.2 * 2*np.pi)
-    y2 = np.cos(x * 0.2 * 2*np.pi)
-    y3 = x * 0.1
-
-    # Initialize a figure
-    fig = Figure()
-
-    # Add data to the figure
-    fig.plot(x, y1, label='sin(2pi * 0.2 x)')
-    fig.plot(x, y2, label='cos(2pi * 0.2 x)')
-    fig.plot(x, y3, label='0.1 x')
-
-    # Show the figure
-    fig.show()
-
-
-if __name__ == "__main__":
-    example()

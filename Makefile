@@ -7,7 +7,7 @@ build:
 run:
 	docker run -td --name $(CONTAINER_NAME) $(IMG_NAME)
 	docker cp src $(CONTAINER_NAME):/root
-	-docker exec -it $(CONTAINER_NAME) python src/main.py
+	-docker exec -it $(CONTAINER_NAME) python src/example.py
 	docker stop $(CONTAINER_NAME)
 	docker rm $(CONTAINER_NAME)
 
