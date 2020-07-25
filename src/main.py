@@ -74,11 +74,11 @@ class Figure:
         descrete_plots = self._discretize_plots(plot_height-3, plot_width-3, *val_range)
         for k, p in enumerate(descrete_plots):
             for xi, yi in p:
-                stdscr.addch(yi+1, xi+xtick_size+1+1, self.markers[k], curses.color_pair(self.colors[k]))
+                stdscr.addstr(yi+1, xi+xtick_size+1+1, self.markers[k], curses.color_pair(self.colors[k]))
 
         # Draw labels
         for i, label in enumerate(self.labels):
-            stdscr.addch(plot_height+1+i, xtick_size+1, self.markers[i], curses.color_pair(self.colors[i]))
+            stdscr.addstr(plot_height+1+i, xtick_size+1, self.markers[i], curses.color_pair(self.colors[i]))
             stdscr.addstr(plot_height+1+i, xtick_size+5, label)
 
         stdscr.refresh()
