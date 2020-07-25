@@ -81,7 +81,6 @@ class Figure:
 
                 pd.append((xi, yi))
             discrete_plots.append(pd)
-        discrete_plots.append([(0, 0), (0, height), (width, 0), (width, height)])  # Debug plots
 
         return discrete_plots
 
